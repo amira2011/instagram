@@ -2,6 +2,9 @@
 <div class="jumbotron">
   <p><%= link_to "Sign In  ", new_user_session_path, class: "btn btn-primary btn-lg" %></p>
 </div>
-<% end %>
+
+<% else %>
+<%= link_to "Log_out", destroy_user_session_path, method: :delete %>
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<% end %>
