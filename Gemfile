@@ -60,4 +60,6 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'devise'
 
-gem 'toastr-rails'
+  gem 'toastr-rails'
+
+gem 'mini_magick'

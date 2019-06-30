@@ -1,0 +1,55 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+  <% @posts.each do |post| %>
+  <p><%= post.content %></p>
+  <p>USER ID<%= post.user_id %></p>
+  <p> Current USER <%= current_user.id %>
+  <% if post.images.attached? %>
+  <p>
+    <strong>Images:</strong>
+    <br>
+    <% post.images.each do |image| %>
+      <%= image_tag(image) %>
+    <% end %>
+  </p>
+  <% end %>
+
+
+  <% end %>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+
+
+
+        <td><%= post.content %></td>
+        <br>
+
+
+        <td><%= link_to 'Show', post %></td>
+        <% if (user_signed_in? && (current_user.id == post.user_id)) %>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
